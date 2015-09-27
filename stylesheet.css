@@ -1,0 +1,23 @@
+div {
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	border: 5px dashed black;
+	width: 75px;
+	height: 75px;
+	position: relative;
+	display: inline-block;
+	padding: 10px;
+	
+}
+
+.home_team {
+	background-color: green;
+	border-style: solid;
+}
+
+.away_team {
+	background-color: red;
+	border-style: solid;
+}
+
+
