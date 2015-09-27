@@ -11,11 +11,29 @@ var teamColors = {
 	'GSW': ['#04529C', '#FFCC33', '#FFFFFF'],
 	'HOU': ['#CE1138', '#CCCCCC', '#000000'],
 	'IND': ['#092C57', '#FFC322', '#C0C0C0'],
-	
+	'LAC': ['#EE2944', '#146AA2', '#FFFFFF'],
+	'MEM': ['#001F70', '#7399C6', '#FDB927'],
+	'MIA': ['#000000', '#B62630', '#FF9F00'],
+	'MIL': ['#003614', '#E32636', '#C0C0C0'],
+	'MIN': ['#0F4D92', '#8C92AC', '#50C878'],
+	'BKN': ['#000000', '#000000', '#FFFFFF'],
+	'NOP': ['#002B5C', '#B4975A', '#E31836'],
+	'NYK': ['#0953A0', '#FF7518', '#C0C0C0'],
+	'OKC': ['#007DC3', '#F05133', '#FDBB30'],
+	'ORL': ['#0047AB', '#000000', '#708090'],
+	'PHI': ['#0046AD', '#D0103A', '#FFFFFF'],
+	'PHO': ['#1C105E', '#E65F20', '#B1B3B3'],
+	'POR': ['#F0163A', '#B6BFBF', '#000000'],
+	'SAC': ['#753BBD', '#000000', '#8A8D8F'],
+	'SAS': ['#000000', '#BEC8C9', '#FFFFFF'],
+	'TOR': ['#B31B1B', '#000000', '#708090'],
+	'UTA': ['#00275D', '#FF9100', '#0D4006'],
+	'WAS': ['#C60C30', '#002244', '#BCC4CC']
 };
 
 var playerList = []; var homeList = []; var awayList = [];
 var divList = document.getElementsByTagName('div');
+var homeTeam = 'UTA'; var awayTeam = 'SAC';
 var homeRoster = ['Stephen Curry', 'Klay Thompson', 'Harrison Barnes', 'Draymond Green', 'Andrew Bogut']; 
 var awayRoster = ['John Wall', 'Bradley Beal', 'Otto Porter, Jr.', 'Nene Hilario', 'Marcin Gortat'];
 var positions = ['PG', 'SG', 'SF', 'PF', 'C'];
@@ -26,7 +44,6 @@ function Player(name, position, elm, id, home) {
 	this.pos = position;
 	this.name = name;
 	this.id = id
-	this.hasBall = false;
 	this.home = home;
 	this.elm = elm;
 	this.addID = function() {
@@ -35,25 +52,19 @@ function Player(name, position, elm, id, home) {
 	this.move = function(left, right, top, bottom, time) {
 		$(document).ready(function() {
 			$('#'+id).animate({
-				left: '+='+left.toString(),
-				right: '+='+right.toString(),
-				top: '+='+top.toString(),
-				bottom: '+='+bottom.toString()
+				left: '+='+left,
+				right: '+='+right,
+				top: '+='+top,
+				bottom: '+='+bottom
 			}, time);
 		});
 	};
 	if(home) {
-		this.elm.style.backgroundColor = homeColors[0];
-		this.elm.style.borderColor = homeColors[1];	
+		this.elm.style.backgroundColor = teamColors[homeTeam][0];
+		this.elm.style.borderColor = teamColors[homeTeam][1];	
 	} else {
-		this.elm.style.backgroundColor = awayColors[0];
-		this.elm.style.borderColor = awayColors[1];
-	};
-	
-	if(this.pos == 'PG') {
-		this.hasBall = true;
-		this.elm.style.backgroundImage = 'bball.jpg';
-		console.log(this.hasBall);
+		this.elm.style.backgroundColor = teamColors[awayTeam][0];
+		this.elm.style.borderColor = teamColors[awayTeam][1];
 	};
 };
 function createLists() {
