@@ -2,24 +2,21 @@
 
 	<html>
 		<head>
-			<title>website</title>
+			<title>NBA Play Display</title>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 			<link type='text/css', rel='stylesheet', href='stylesheet.css'/>
 			
 			
 		</head>
 		
 		<body>
-			 <div class='home_team'></div>
-			 <div class='away_team'></div>
-			 <div class='home_team'></div>
-			 <div class='away_team'></div>
-			 <div class='home_team'></div>
-			 <div class='away_team'></div>
-			 <div class='home_team'></div>
-			 <div class='away_team'></div>
-			 <div class='home_team'></div>
-			 <div class='away_team'></div>
+			<div id='header'>
+				<input type='text' placeholder='Home Team...' id='left'>
+				<button onclick='loadPlayers()' id='startbutton'>Start</button>
+				<input type='text' placeholder='Away Team...' id='right'>
+			</div>
 		</body>
 		
 		<script type='text/javascript', src='main.js'></script>

@@ -1,23 +1,67 @@
-div {
+.player {
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
-	border: 5px dashed black;
-	width: 75px;
-	height: 75px;
+	border: 5px solid black;
+	width: 30px;
+	height: 30px;
 	position: relative;
 	display: inline-block;
 	padding: 10px;
 	
 }
 
-.home_team {
-	background-color: green;
-	border-style: solid;
+#header {
+	background-color: dodgerblue;
+	height: 100px;
+	width: 100%;
+	text-align: center;
+	position: relative;
+	padding: 0px;
+	outline: 0;
 }
 
-.away_team {
-	background-color: red;
-	border-style: solid;
+input {
+	padding: 0;
+	outline: 0;
+	font-size: 17.5px;
+	font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+	display: inline-block;
+	position: absolute;
+	height: 22px;
+	top: 50%;
+	margin-top: -13px;
 }
 
+#right {
+	right: 30px;
+}
 
+#left {
+	left: 30px;
+}
+
+#title {
+	top: 50%;
+	text-align: center;
+	font-size: 30px;
+	height: 40px;
+	font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+	width: 300px;
+	display: inline-block;
+}
+
+#startbutton {
+	position: absolute;
+	top: 50px;
+	width: 300px;
+	display: inline-block;
+	margin-left: -150px;
+	height: 22px;
+	top: 50%;
+	margin-top: -11px;
+}
+
+body {
+	margin: 0px;
+	outline: 0px;
+}
