@@ -64,4 +64,12 @@ input {
 body {
 	margin: 0px;
 	outline: 0px;
+	height: 100%;
+	overflow: hidden;
+}
+
+#background-image {
+    position:absolute;
+    top:-50%;
+    margin:auto;
 }
