@@ -18,7 +18,7 @@
 	position: relative;
 	padding: 0px;
 	outline: 0;
-}
+}	
 
 input {
 	padding: 0;
@@ -72,4 +72,59 @@ body {
     position:absolute;
     top:-50%;
     margin:auto;
+}
+
+#reset {
+	background-color: darkblue;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	vertical-align: -webkit-baseline-middle middle;
+	font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+	position: absolute;
+	top: -25px;
+}
+
+#reset:hover {
+	cursor: pointer;
+}
+
+#playselect {
+	background-color: dodgerblue;
+	height: 100px;
+	width: 100%;
+	text-align: center;
+	position: relative;
+	padding: 0px;
+	outline: 0;
+	position: absolute;
+	bottom: -100px;
+	
+}
+
+#playvalue {
+	position: absolute;
+	top: 50px;
+	width: 300px;
+	display: inline-block;
+	margin-left: -150px;
+	height: 22px;
+	top: 50%;
+	margin-top: -11px;
+}
+
+.logo {
+	display: inline-block;
+	border-radius: 100%;
+}
+
+#rightimage {
+	right: 30px;
+}
+
+#leftimage {
+	left: 30px;
 }

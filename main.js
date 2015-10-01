@@ -122,6 +122,7 @@ var positions = ['PG', 'SG', 'SF', 'PF', 'C'];
 var infoArray = {};
 
 // Autocomplete for inputs on starting page -- sources table above
+// also creates reset button functions
 $(document).ready(function() {
 	$('#left').autocomplete({
 		source: teamList,
@@ -131,6 +132,7 @@ $(document).ready(function() {
 		source: teamList,
 		autoFocus: true
 	});
+	$('#reset').click(resetAnimations);
 });
 
 // Player class -- makes editing the player divs easy
@@ -166,6 +168,11 @@ function Player(name, position, elm, id, home) {
 // Creates lists of div elements from HTML page, this is used for setting the player.elm item for each player. Allows for easy access to each player's item.
 // The general concept is to be able to select a player by name like 'Bradley Beal'.move(1000, 0, 0, 0, 1000), with easy access to name and number
 function createLists() {
+	if(homeList.length > 0) {
+		homeList = [];
+		playerList = [];
+		awayList = [];
+	}
 	var divList = document.getElementsByClassName('player');
 	// get a list of all divs with class player in the document
 	for(var div in divList) {
@@ -274,7 +281,7 @@ function updateHoverStatus() {
 // has a quick check to confirm that the team exists, just in case.
 function fillRosterLists(home, away) {
 	var starterConstant = '_STARTERS';
-	console.log(home, away);
+	
 	if(teamStarters.hasOwnProperty(home+starterConstant) && teamStarters.hasOwnProperty(away+starterConstant)) {
 		homeRoster = teamStarters[home+starterConstant];
 		awayRoster = teamStarters[away+starterConstant];
@@ -293,7 +300,16 @@ function introAnimations() {
 		}, 750);
 		
 		$('#startbutton').attr('disabled', 'true');
+		$('#reset').animate({
+			top: '+=25'
+		}, 750);
 		
+		//$('#rightimage').attr('src', 'logos/'+awayTeam+'.png');
+		
+		$('#playselect').animate({
+			bottom: '+=97.34%'
+		}, 750);
+
 	// $('<img src=\'basketball-floor-texture.png\' id="background-image"></img>').appendTo('body');
 	});
 };
@@ -304,16 +320,41 @@ function resetAnimations() {
 			top: '+=110'
 		}, 750);
 		
+		
+	
+	$('#reset').animate({
+		top: '-=25'
+	}, 750);
+	
+	
+	
+	for (var player in infoArray) {
+		infoArray[player].move(Math.random() * 3000, Math.random() * 300, Math.random() * 3000, Math.random() * 300, 1500);
+	};
+	setTimeout(function() {
+		for (var player in infoArray) {
+			document.body.removeChild(infoArray[player].elm);
+			delete infoArray[player];
+			
+		};
 		$('#startbutton').attr('disabled', false);
+		
+	}, 1500);
+	
+	$('#playselect').animate({
+			bottom: '-=97.34%'
+		}, 750);
 	});
+	
 };
 
 // big function called when start button is pressed
 // starts out by getting the values of the two inputs, then converts them to their acronym forms, then goes through checks to confirm that they are real teams -- if either isn't,
 // it is randomly selected from the current list of teams, then it goes through simple animations to remove the header, and finally it creates the player divs, and calls all of
 // the previous functions that are used to fill in all necessary info about the teams, players, colors, etc, etc.
-function loadPlayers() {
+function loadPlayers() { 
 	var homeInput = document.getElementById('left').value; var awayInput = document.getElementById('right').value;
+	
 	homeInput = convertToAcronym(homeInput); awayInput = convertToAcronym(awayInput);
 	
 	if(homeInput in teamColors) {
@@ -328,8 +369,13 @@ function loadPlayers() {
 		awayTeam = convertToAcronym(teamList[Math.floor(Math.random() * teamList.length)]);	
 	};
 	
+	if(homeTeam === awayTeam) {
+		while(awayTeam === homeTeam) {
+			awayTeam = convertToAcronym(teamList[Math.floor(Math.random() * teamList.length)]);
+		};
+	};
+	
 	introAnimations();
-	resetAnimations();
 	
 	for(var i = 0; i < 10; i++) {
 		var player = document.createElement('div')
@@ -342,6 +388,7 @@ function loadPlayers() {
 	};
 	
 	fillRosterLists(homeTeam, awayTeam);
+	
 	createLists();
 	createPlayerInfoArray();
 	updateHoverStatus();
